@@ -1,0 +1,27 @@
+{
+  "name": "responsive-css",
+  "version": "1.0.3",
+  "description": "CSS class for responsive websites",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcoellarb/responsive-css.git"
+  },
+  "keywords": [
+    "responsive",
+    "css",
+    "scss"
+  ],
+  "author": "Daniel Coellar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcoellarb/responsive-css/issues"
+  },
+  "homepage": "https://github.com/dcoellarb/responsive-css#readme"
+}

@@ -1,0 +1,202 @@
+
+.flex {	
+	display: flex;
+}
+$flex-direction: (row,row-reverse,column,column-reverse);
+$flex-wrap: (nowrap,wrap,wrap-reverse);
+@each $direction in $flex-direction{
+	.flex-#{$direction} {
+		@extend .flex;
+		flex-direction: $direction;
+	}
+	@each $break in $breakpoints-short{
+		$bname: nth($break, 1);
+  		$bvalue_min: nth($break, 2);
+  		$bvalue_max: nth($break, 3);
+		.#{$bname}-flex-#{$direction} {
+			@extend .flex;
+			@if $bvalue_max > 0 {
+				@include respond-to-min-max($bvalue_min,$bvalue_max){
+					flex-direction: $direction;    										
+	    		}				
+			} @else {
+	    		@include respond-to-min($bvalue_min){
+					flex-direction: $direction;    										
+	    		}				
+			}
+		}		
+	}
+	@each $break in $breakpoints-columns{
+		$bname: nth($break, 1);
+  		$bvalue_min: nth($break, 2);
+  		$bvalue_max: nth($break, 3);
+		.#{$bname}-flex-#{$direction} {
+			@extend .flex;
+			@if $bvalue_max > 0 {
+				@include respond-to-min-max($bvalue_min,$bvalue_max){
+					flex-direction: $direction;    										
+	    		}				
+			} @else {
+	    		@include respond-to-min($bvalue_min){
+					flex-direction: $direction;    										
+	    		}				
+			}
+		}		
+	}	
+
+	@each $wrap in $flex-wrap{
+		.flex-#{$direction}-#{$wrap} {
+			@extend .flex;
+			flex-flow: $direction $wrap;
+		}
+		@each $break in $breakpoints-short{
+			$bname: nth($break, 1);
+  			$bvalue_min: nth($break, 2);
+  			$bvalue_max: nth($break, 3);
+			.#{$bname}-flex-#{$direction}-#{$wrap} {
+				@extend .flex;
+    			@if $bvalue_max > 0 {
+					@include respond-to-min-max($bvalue_min,$bvalue_max){
+						flex-flow: $direction $wrap;
+		    		}				
+				} @else {
+					@include respond-to-min($bvalue_min){
+						flex-flow: $direction $wrap;
+	    			}			
+				}
+			}		
+		}
+		@each $break in $breakpoints-columns{
+			$bname: nth($break, 1);
+  			$bvalue_min: nth($break, 2);
+  			$bvalue_max: nth($break, 3);
+			.#{$bname}-flex-#{$direction}-#{$wrap} {
+				@extend .flex;
+    			@if $bvalue_max > 0 {
+					@include respond-to-min-max($bvalue_min,$bvalue_max){
+						flex-flow: $direction $wrap;
+		    		}				
+				} @else {
+					@include respond-to-min($bvalue_min){
+						flex-flow: $direction $wrap;
+	    			}			
+				}
+			}		
+		}		
+	}
+}
+
+$justify-content: (('start',flex-start),('end',flex-end),('center',center),('between',space-between),('around',space-around));
+$align-items: (('start',flex-start),('end',flex-end),('center',center),('stretch',stretch),('baseline',baseline));
+@each $justify in $justify-content{
+	$jname: nth($justify, 1);
+  	$jvalue: nth($justify, 2);
+	@each $align in $align-items{
+		$aname: nth($align, 1);
+  		$avalue: nth($align, 2);
+		.flex-#{$jname}-#{$aname} {
+			@extend .flex;
+			justify-content: $jvalue;
+			align-items: $avalue;
+		}
+		@each $break in $breakpoints-short{
+			$bname: nth($break, 1);
+  			$bvalue_min: nth($break, 2);
+  			$bvalue_max: nth($break, 3);
+			.#{$bname}-flex-#{$jname}-#{$aname} {
+				@extend .flex;
+    			@if $bvalue_max > 0 {
+					@include respond-to-min-max($bvalue_min,$bvalue_max){
+						justify-content: $jvalue;
+						align-items: $avalue;
+					}
+				} @else {
+					@include respond-to-min($bvalue_min){
+						justify-content: $jvalue;
+						align-items: $avalue;									
+	    			}		
+				}    			
+			}		
+		}
+		@each $break in $breakpoints-columns{
+			$bname: nth($break, 1);
+  			$bvalue_min: nth($break, 2);
+  			$bvalue_max: nth($break, 3);
+			.#{$bname}-flex-#{$jname}-#{$aname} {
+				@extend .flex;
+    			@if $bvalue_max > 0 {
+					@include respond-to-min-max($bvalue_min,$bvalue_max){
+						justify-content: $jvalue;
+						align-items: $avalue;
+					}
+				} @else {
+					@include respond-to-min($bvalue_min){
+						justify-content: $jvalue;
+						align-items: $avalue;									
+	    			}		
+				}    			
+			}		
+		}
+	}
+}
+
+$align-content: (('start',flex-start),('end',flex-end),('center',center),('between',space-between),('around',space-around));
+@each $option in $align-content{
+	$name: nth($option, 1);
+  	$value: nth($option, 2);
+	.flex-content-#{$name} {
+		@extend .flex;
+		align-content: $value;
+	}
+	@each $break in $breakpoints-short{
+		$bname: nth($break, 1);
+		$bvalue_min: nth($break, 2);
+		$bvalue_max: nth($break, 3);
+		.#{$bname}-flex-content-#{$name} {
+			@extend .flex;
+			@if $bvalue_max > 0 {
+				@include respond-to-min-max($bvalue_min,$bvalue_max){
+					align-content: $value;
+				}
+			} @else {
+				@include respond-to-min($bvalue_min){
+					align-content: $value;									
+	    		}	
+			}     		
+		}		
+	}
+	@each $break in $breakpoints-columns{
+		$bname: nth($break, 1);
+		$bvalue_min: nth($break, 2);
+		$bvalue_max: nth($break, 3);
+		.#{$bname}-flex-content-#{$name} {
+			@extend .flex;
+			@if $bvalue_max > 0 {
+				@include respond-to-min-max($bvalue_min,$bvalue_max){
+					align-content: $value;
+				}
+			} @else {
+				@include respond-to-min($bvalue_min){
+					align-content: $value;									
+	    		}	
+			}     		
+		}		
+	}
+}
+
+@each $break in $breakpoints-columns{
+	$bname: nth($break, 1);
+	$bvalue_min: nth($break, 2);
+	$bvalue_max: nth($break, 3);
+	.#{$bname}-hidden {
+		@if $bvalue_max > 0 {
+			@include respond-to-min-max($bvalue_min,$bvalue_max){
+				display: none;
+			}
+		} @else {
+			@include respond-to-min($bvalue_min){
+				display: none;								
+    		}	
+		}     		
+	}		
+}
